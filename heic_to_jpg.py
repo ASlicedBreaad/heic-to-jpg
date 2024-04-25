@@ -17,7 +17,6 @@ if __name__ == "__main__":
         for i,filename in enumerate(os.listdir(curr_path)):
             if filename.lower().endswith(".heic"): 
                 noFiles = False
-                # print(f"Converting {os.path.join(curr_path,filename)} to .jpg")
                 subprocess.run(["sudo","convert", f"{filename}", f"{(filename[0:-5] + '.jpg')}"])
                 subprocess.run(["sudo","mv",f"{filename}",f"{os.path.join(curr_path,heic_folder)}"])
                 num_files_converted+=1
