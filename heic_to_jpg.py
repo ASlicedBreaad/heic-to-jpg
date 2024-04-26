@@ -1,6 +1,5 @@
 #!/usr/bin/python3.10
 import os
-import subprocess
 import argparse
 import shutil
 import pillow_heif
@@ -32,7 +31,6 @@ def convert_files(curr_path: str, conv_type: str):
     num_files_converted = 0
     print("Starting conversion from HEIC to JPG")
     images = filter_images(os.listdir(curr_path))   
-    print(images)  
     try:
         for _, filename in enumerate(images):
         
@@ -58,6 +56,8 @@ def convert_files(curr_path: str, conv_type: str):
                     num_files_to_convert, num_files_converted)
     except PermissionError:
         print("Not enough permissions operate")
+    except:
+        print("An error has occured")
 
     if not no_folders:
         if (not os.listdir(os.path.join(curr_path,heic_folder))):
@@ -85,7 +85,6 @@ if __name__ == "__main__":
     debug_mode = args.debug
     conv_type = args.type
     conv_path = args.path
-    curr_path = os.getcwd()
 
     if debug_mode:
         conv_path = "./debug"
@@ -110,3 +109,5 @@ if __name__ == "__main__":
                 convert_files(conv_path,conv_type)
             else:
                 convert_files(conv_path, conv_type)
+    else:
+        print(f"{conv_path} doesn't exist")
