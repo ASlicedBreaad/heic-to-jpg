@@ -1,3 +1,4 @@
 *.heic
 *.jpg
 .venv/
+!sample1.heic

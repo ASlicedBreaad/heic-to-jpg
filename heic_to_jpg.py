@@ -91,7 +91,7 @@ if __name__ == "__main__":
         os.makedirs(conv_path, exist_ok=True)
         try:
             for i in range(0, 20):
-                shutil.copy(f"{conv_path}/../sample1.heic",
+                shutil.copy(f"{conv_path}/../debug_resources/sample1.heic",
                             f"{conv_path}/sample_"+str(i)+".heic")
         except:
             print("Debug files already present")
