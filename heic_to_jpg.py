@@ -4,6 +4,7 @@ import argparse
 import shutil
 import pillow_heif
 from PIL import Image
+from pathlib import Path
 heic_folder = "heic_files"
 no_folders = False
 debug_mode = False
@@ -41,23 +42,23 @@ def convert_files(curr_path: str, conv_type: str):
             except:
                 print(f"Error converting {os.path.join(curr_path,filename)}")
             else: 
+                new_file = Path(filename).stem + conv_type
                 try: 
-                    img.save(f"{os.path.join(curr_path,(filename[0:-5] + conv_type))}")
+                    img.save(f"{os.path.join(curr_path,(new_file))}")
                 except OSError:
-                    print(f"Error while trying to save {curr_path}{(filename[0:-5] + conv_type)}")
+                    print(f"Error while trying to save {os.path.join(curr_path,(new_file))}")
                 if not no_folders:
                     try:
                         shutil.move(os.path.join(curr_path,filename),
                                     os.path.join(curr_path,heic_folder))
                     except shutil.Error:
-                        print(f"Couldn't move {curr_path}{filename} to {os.path.join(curr_path,heic_folder)}")
+                        print(f"Couldn't move {os.path.join(curr_path,filename)} to {os.path.join(curr_path,heic_folder)}")
                 num_files_converted += 1
                 print_conversion_result(
                     num_files_to_convert, num_files_converted)
     except PermissionError:
         print("Not enough permissions operate")
-    except:
-        print("An error has occured")
+    
 
     if not no_folders:
         if (not os.listdir(os.path.join(curr_path,heic_folder))):
