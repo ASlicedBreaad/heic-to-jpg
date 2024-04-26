@@ -24,7 +24,7 @@ python heic-to-jpg.py
 
 To see the list of available commands, do: 
 ```bash
-python heic-ho-jpg.py --help
+python heic-to-jpg.py --help
 ```
 
 To Debug or test the app, a sample image is provided in `debug_resources`
@@ -34,6 +34,6 @@ To run a debug, make sure the PATH provided or if none is provided, the folder w
 
 To Debug, simply enter
 ```bash
-python heic-ho-jpg.py --debug
+python heic-to-jpg.py --debug
 ```
 
