@@ -8,7 +8,7 @@ Currently it's possible to convert them to `.PNG`
 
 ## Requirements
 
-Python3.10+
+Python3.6+
 
 ## Installation
 
