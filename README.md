@@ -1,10 +1,10 @@
-# heic-to-jpg
+# HEICON
 
 ## What does it do ?
 
 heic-to-jpg allows at its core, to convert HEIC images to `.JPG` ones.
 
-Currently it's possible to convert them to `.PNG`
+Currently it's possible to convert them to `.PNG` and `.JPG`
 
 ## Requirements
 
