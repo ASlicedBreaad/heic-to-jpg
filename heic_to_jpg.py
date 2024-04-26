@@ -33,32 +33,32 @@ def convert_files(curr_path: str, conv_type: str):
     print("Starting conversion from HEIC to JPG")
     images = filter_images(os.listdir(curr_path))   
     try:
-        for _, filename in enumerate(images):
-        
-            heic_img = pillow_heif.read_heif(os.path.join(curr_path,filename))
+        for filename in images:
             try:
+                heic_img = pillow_heif.read_heif(os.path.join(curr_path,filename))
                 img = Image.frombytes(
                     heic_img.mode, heic_img.size, heic_img.data, "raw")
-            except:
-                print(f"Error converting {os.path.join(curr_path,filename)}")
+            except Exception as e:
+                print(f"Error converting {os.path.join(curr_path,filename)}:",e)
             else: 
                 new_file = Path(filename).stem + conv_type
                 try: 
                     img.save(f"{os.path.join(curr_path,(new_file))}")
-                except OSError:
-                    print(f"Error while trying to save {os.path.join(curr_path,(new_file))}")
+                except OSError as e:
+                    print(f"Error while trying to save {os.path.join(curr_path,(new_file))}:",e)
                 if not no_folders:
                     try:
                         shutil.move(os.path.join(curr_path,filename),
                                     os.path.join(curr_path,heic_folder))
-                    except shutil.Error:
-                        print(f"Couldn't move {os.path.join(curr_path,filename)} to {os.path.join(curr_path,heic_folder)}")
+                    except shutil.Error as e:
+                        print(f"Couldn't move {os.path.join(curr_path,filename)} to {os.path.join(curr_path,heic_folder)}:",e)
                 num_files_converted += 1
                 print_conversion_result(
                     num_files_to_convert, num_files_converted)
-    except PermissionError:
-        print("Not enough permissions operate")
-    
+    except PermissionError as e:
+        print("Not enough permissions operate:",e)
+    except Exception as e:
+        print("An error has occured:",e)
 
     if not no_folders:
         if (not os.listdir(os.path.join(curr_path,heic_folder))):
