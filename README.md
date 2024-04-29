@@ -38,6 +38,7 @@ python heic-to-jpg.py --debug
 ```
 
 ## To-do
+- <input type="checkbox"> Add multi-processing
 - <input type="checkbox"> Make an executable app on either Linux or Windows
 - <input type="checkbox"> Add a GUI
 
