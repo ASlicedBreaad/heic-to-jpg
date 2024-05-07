@@ -56,9 +56,10 @@ def conversion_process(images:list[str],curr_path:str,queue:Queue):
 
 def convert_files(curr_path: str, conv_type: str):
     num_files_converted = 0
+    final_type = conv_type.replace('.', "").upper()
     if not no_folders:
         os.makedirs(os.path.join(curr_path,heic_folder), exist_ok=True)
-    print("Starting conversion from HEIC to JPG")
+    print(f"Starting conversion from HEIC to {final_type}")
     images = filter_images(os.listdir(curr_path))   
     try:
         dic = {}
@@ -88,7 +89,6 @@ def convert_files(curr_path: str, conv_type: str):
         if not no_folders:
             if (not os.listdir(os.path.join(curr_path,heic_folder))):
                 os.rmdir(os.path.join(curr_path,heic_folder))
-        final_type = conv_type.replace('.', "").upper()
         print(
             f"Finished converting {num_files_converted} images from HEIC to {final_type}")
     return num_files_converted
