@@ -39,7 +39,7 @@ def conversion_process(images:list[str],curr_path:str,queue:Queue):
             except Exception as e:
                 print(f"Error converting {os.path.join(curr_path,filename)}:",e)
             else: 
-                new_file = Path(filename).stem + conv_type
+                new_file = Path(filename).stem + convert_types[0]
                 try: 
                     img.save(f"{os.path.join(curr_path,(new_file))}")
                 except Exception as e:
